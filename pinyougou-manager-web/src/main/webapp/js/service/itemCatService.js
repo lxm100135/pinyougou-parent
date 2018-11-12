@@ -29,4 +29,8 @@ app.service('itemCatService',function($http){
 	this.search=function(page,rows,searchEntity){
 		return $http.post('../itemCat/search.do?page='+page+"&rows="+rows, searchEntity);
 	}    	
+	//根据parentId查询列表功能
+	this.findByParentId=function(parentId){
+		return $http.get('../itemCat/selectByParentId.do?parentId='+parentId);
+	}
 });
