@@ -29,5 +29,23 @@ app.controller('baseController' ,function($scope){
             $scope.selectIds.splice(idx, 1);//删除 
 		}
 	}
-	
+//	//在list集合中根据某key的值查询对象
+//	$scope.searchObjectByKey=function(list,key,keyValue){
+//		
+//		for(var i=0;i<list.length;i++){
+//			if(list[i][key]==keyValue){
+//				return list[i];
+//			}			
+//		}
+//		return null;		
+//	}
+	//查询集合中是否存在选项
+	$scope.searchList=function(list, key, keyName){
+		for(var i=0; i<list.length; i++){
+			if (list[i][key]==keyName) {
+				return list[i];
+			}
+		}
+		return null;
+	}
 });	

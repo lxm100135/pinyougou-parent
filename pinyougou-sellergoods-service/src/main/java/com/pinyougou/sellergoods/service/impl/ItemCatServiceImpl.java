@@ -1,6 +1,9 @@
 package com.pinyougou.sellergoods.service.impl;
+import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -18,6 +21,7 @@ import entity.PageResult;
  *
  */
 @Service
+@Transactional
 public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
@@ -74,6 +78,18 @@ public class ItemCatServiceImpl implements ItemCatService {
 	@Override
 	public void delete(Long[] ids) {
 		for(Long id:ids){
+			List<TbItemCat> itemCats2 = findByParentId(id);
+			if (itemCats2!=null) {
+				for(TbItemCat itemCat2: itemCats2) {
+					List<TbItemCat> itemCats3 = findByParentId(itemCat2.getId());
+					if (itemCats3!=null) {
+						for(TbItemCat itemCat3: itemCats3) {
+							itemCatMapper.deleteByPrimaryKey(itemCat3.getId());
+						}
+					}
+					itemCatMapper.deleteByPrimaryKey(itemCat2.getId());
+				}
+			}
 			itemCatMapper.deleteByPrimaryKey(id);
 		}		
 	}

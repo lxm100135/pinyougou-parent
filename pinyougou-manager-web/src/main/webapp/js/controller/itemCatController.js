@@ -1,6 +1,6 @@
 //控制层 
 app.controller('itemCatController', function($scope, $controller,
-		itemCatService) {
+		itemCatService, typeTemplateService) {
 
 	$controller('baseController', {
 		$scope : $scope
@@ -28,31 +28,17 @@ app.controller('itemCatController', function($scope, $controller,
 		});
 	}
 
-	// 保存
-	$scope.save = function() {
-		var serviceObject;// 服务层对象
-		if ($scope.entity.id != null) {// 如果有ID
-			serviceObject = itemCatService.update($scope.entity); // 修改
-		} else {
-			serviceObject = itemCatService.add($scope.entity);// 增加
-		}
-		serviceObject.success(function(response) {
-			if (response.success) {
-				// 重新查询
-				$scope.reloadList();// 重新加载
-			} else {
-				alert(response.message);
-			}
-		});
-	}
-
 	// 批量删除
 	$scope.dele = function() {
 		// 获取选中的复选框
 		itemCatService.dele($scope.selectIds).success(function(response) {
 			if (response.success) {
-				$scope.reloadList();// 刷新列表
+				// 重新查询
+				$scope.nowParentId();
+				$scope.findByParentId($scope.parentId);// 重新加载
 				$scope.selectIds = [];
+			}else {
+				alert(response.message);
 			}
 		});
 	}
@@ -87,8 +73,54 @@ app.controller('itemCatController', function($scope, $controller,
 			$scope.entity_1 = entity;
 			$scope.entity_2 = null;
 		} else if ($scope.grade == 3) {
-			$scope.entity_2 = entity;//entity_1不变
+			$scope.entity_2 = entity;// entity_1不变
 		}
 		$scope.findByParentId(entity.id)
+	}
+
+	$scope.parentId = 0;
+	// 当前上级id
+	$scope.nowParentId = function() {
+		if ($scope.grade == 1) {
+			$scope.parentId = 0;
+		} else if ($scope.grade == 2) {
+			$scope.parentId = $scope.entity_1.id;
+		} else if ($scope.grade == 3) {
+			$scope.parentId = $scope.entity_2.id
+		}
+	}
+	// 保存
+	$scope.save = function() {
+		$scope.nowParentId();
+		$scope.entity.parentId = $scope.parentId;
+		
+		$scope.entity.typeId=parseInt($scope.entity.typeId.text);
+		var serviceObject;// 服务层对象
+		if ($scope.entity.id != null) {// 如果有ID
+			serviceObject = itemCatService.update($scope.entity); // 修改
+		} else {
+			serviceObject = itemCatService.add($scope.entity);// 增加
+		}
+		serviceObject.success(function(response) {
+			if (response.success) {
+				// 重新查询
+				$scope.findByParentId($scope.parentId);// 重新加载
+			} else {
+				alert(response.message);
+			}
+		});
+	}
+
+	$scope.typList = { data: [ ] };
+	// 模板选项下拉列表
+	$scope.selectOptionList = function() {
+		typeTemplateService.selectOptionList().success(function(response) {
+//			response右边id转String
+			for(var i =0;i<response.length;){
+				response[i].text=response[i].text+"";
+				i++;
+			}
+			$scope.typList={ data: response};
+		});
 	}
 });
