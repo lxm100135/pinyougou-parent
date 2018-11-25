@@ -76,7 +76,7 @@
 			<artifactId>servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+		<!-- 引入其他项目依赖 -->
 		<dependency>
 			<groupId>com.pinyougou</groupId>
 			<artifactId>pinyougou-common</artifactId>
