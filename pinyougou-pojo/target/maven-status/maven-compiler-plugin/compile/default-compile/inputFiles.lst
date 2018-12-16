@@ -10,13 +10,16 @@ E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbSpecificationOption.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbTypeTemplateExample.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbContentCategory.java
+E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbSeckillOrderExample.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbBrand.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbItemCatExample.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbAreas.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbOrderItem.java
+E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojogroup\Cart.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojogroup\Specification.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbPayLog.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbProvincesExample.java
+E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbSeckillOrder.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbUser.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbCitiesExample.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbSellerExample.java
@@ -31,6 +34,7 @@ E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbItem.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbGoods.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbProvinces.java
+E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbSeckillGoods.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\entity\PageResult.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbSpecificationExample.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbSpecification.java
@@ -40,3 +44,4 @@ E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbContentExample.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbSeller.java
 E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbCities.java
+E:\fileWork\eclipse-workspace\pinyougou-parent\pinyougou-pojo\src\main\java\com\pinyougou\pojo\TbSeckillGoodsExample.java

@@ -8,11 +8,9 @@
         http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
-	<!-- 访问dubbo占用本机的端口（每一个服务都不同，只有一个服务可以省略） -->
     <dubbo:protocol name="dubbo" port="20884"></dubbo:protocol>
 	<dubbo:application name="pinyougou-search-service"/>  
-	<!-- 访问服务zookeeper:的端口 -->
-    <dubbo:registry address="zookeeper://192.168.25.137:2181"/>
+    <!--  dubbo:registry address="zookeeper://192.168.25.137:2181"/>-->
     <dubbo:annotation package="com.pinyougou.search.service.impl" />  
    
    

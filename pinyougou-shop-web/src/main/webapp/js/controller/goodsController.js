@@ -166,9 +166,10 @@ app.controller('goodsController', function($scope, $controller, $location, goods
 				});
 	});
 	//初始化规格选项
-	var specs = $scope.entity.goodsDesc.specificationItems;
+//	var specs = $scope.entity.goodsDesc.specificationItems;
 	//更新选中的规格选项
 	$scope.updateChoseValue=function($event, attributeName, value){
+		var specs = $scope.entity.goodsDesc.specificationItems;
 		//查询是否存在规格
 		var object = $scope.searchList(specs, 'attributeName', attributeName);
 		if (object!=null) {
@@ -191,8 +192,7 @@ app.controller('goodsController', function($scope, $controller, $location, goods
 	
 	$scope.createItemList=function(){
 		//初始化SKU
-		$scope.entity.itemList= [ {spec:{ }, price:0, num:99999, status:'0', isDefault:'0' } ];
-//		$scope.entity.itemList= [ {spec:{ }, 'price': "23423", 'num' : "2332", 'status' :"0", 'is_default' : "0" } ];
+		$scope.entity.itemList= [ {spec:{ }, price:0, num:00000, status:'0', isDefault:'0' } ];
 		var items = $scope.entity.goodsDesc.specificationItems;
 		for (var i = 0; i < items.length; i++) {
 			$scope.entity.itemList = addColumn($scope.entity.itemList, items[i].attributeName, items[i].attributeValue);

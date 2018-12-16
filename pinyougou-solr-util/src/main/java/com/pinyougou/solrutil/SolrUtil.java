@@ -28,14 +28,14 @@ public class SolrUtil {
 		Criteria criteria = example.createCriteria();
 		criteria.andStatusEqualTo("1");//审核通过的才导入
 		List<TbItem> listItem = itemMapper.selectByExample(example);
-		
-		System.out.println("---商品列表---");
+		System.out.println(listItem);
+		System.out.println("------------商品列表-------------------");
 		for (TbItem item : listItem) {
 			System.out.println(item.getId()+" "+item.getTitle()+" "+item.getPrice());
 			Map map = JSON.parseObject(item.getSpec(), Map.class);//数据库中取出规格的json字符串，转为map
 			item.setSpecMap(map);
 		}
-		System.out.println("---结束---");
+		System.out.println("-------------结束---------------------------");
 		solrTemplate.saveBeans(listItem);
 		solrTemplate.commit();
 	}

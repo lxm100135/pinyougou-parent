@@ -6,7 +6,23 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>pinyougou-dao</artifactId>
-  
+  <properties>
+  	<env>dev</env><!-- 标签可自定义 -->
+  </properties>
+  <profiles>
+  	<profile>
+  		<id>dev</id>
+  		<properties>
+  			<env>dev</env><!-- 开发环境（默认） -->
+  		</properties>
+  	</profile>
+  	<profile>
+  		<id>pro</id>
+  		<properties>
+  			<env>pro</env><!-- 生产环境 -->
+  		</properties>
+  	</profile>
+  </profiles>
   <dependencies>
 
   	<dependency>
@@ -43,4 +59,15 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
   </dependencies>
+  <build>
+  	<filters>
+  		<filter>src/main/resources/filters/db_${env}.properties</filter>
+  	</filters>
+  	<resources>
+  		<resource>
+  			<directory>src/main/resources</directory>
+  			<filtering>true</filtering><!-- 此目录下资源启动过滤 -->
+  		</resource>
+  	</resources>
+  </build>
 </project>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context   
+		http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">  
+	    <property name="brokerURL" value="tcp://192.168.25.137:61616"/>  
+	</bean>
+	   
+	<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">  
+	    <property name="targetConnectionFactory" ref="targetConnectionFactory"/>  
+	</bean>  
+	
+	<bean id="queuesolrDestination" class="org.apache.activemq.command.ActiveMQQueue">  
+	    <constructor-arg value="pinyougou_queue_solr"/>  
+	</bean>    
+	<bean id="queuesolrDeleteDestination" class="org.apache.activemq.command.ActiveMQQueue">  
+	    <constructor-arg value="pinyougou_queue_solr_delete"/>  
+	</bean>    
+	
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="destination" ref="queuesolrDestination" />
+		<property name="messageListener" ref="itemSearchListener" />
+	</bean>
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="destination" ref="queuesolrDeleteDestination" />
+		<property name="messageListener" ref="itemDeleteListener" />
+	</bean>
+	
+</beans>

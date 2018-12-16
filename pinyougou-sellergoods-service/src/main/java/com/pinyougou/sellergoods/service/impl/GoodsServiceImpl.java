@@ -1,5 +1,7 @@
 package com.pinyougou.sellergoods.service.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -147,7 +149,10 @@ public class GoodsServiceImpl implements GoodsService {
 	 */
 	@Override
 	public void update(Goods goods) {
+		//修改商品信息
+		goods.getGoods().setAuditStatus("0");
 		goodsMapper.updateByPrimaryKey(goods.getGoods());
+		//修改商品扩展信息
 		descMapper.updateByPrimaryKey(goods.getGoodsDesc());
 		
 		//先删除itemList在重新添加
@@ -184,6 +189,7 @@ public class GoodsServiceImpl implements GoodsService {
 	 */
 	@Override
 	public void delete(Long[] ids) {
+		
 		for (Long id : ids) {
 			TbGoods goods = goodsMapper.selectByPrimaryKey(id);
 			goods.setIsDelete("1");//表示逻辑删除
@@ -241,5 +247,17 @@ public class GoodsServiceImpl implements GoodsService {
 		}
 		
 	}
+
+	@Override
+	public List<TbItem> findItemListByGoodsIdListAndStatus(Long[] goodsIds, String status) {
+			TbItemExample example = new TbItemExample();
+			com.pinyougou.pojo.TbItemExample.Criteria criteria = example.createCriteria();
+			criteria.andGoodsIdIn(Arrays.asList(goodsIds));//设置goodsId
+			criteria.andStatusEqualTo(status);//设置状态
+			List<TbItem> itemList = itemMapper.selectByExample(example );
+		
+		return itemList;
+	}
+
 
 }

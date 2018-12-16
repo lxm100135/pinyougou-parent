@@ -8,6 +8,24 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>pinyougou-common</artifactId>
+	<!-- profile -->
+	<properties>
+		<env>dev</env>
+	</properties>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<env>dev</env><!-- 开发环境 -->
+			</properties>
+		</profile>
+		<profile>
+			<id>pro</id>
+			<properties>
+				<env>pro</env><!-- 生产环境 -->
+			</properties>
+		</profile>
+	</profiles>
 	<dependencies>
 		<!-- 文件上传组件 -->
 		<dependency>
@@ -28,5 +46,29 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
 		</dependency>
+		<!-- servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
 	</dependencies>
+	<build>
+		<!-- 资源文件替换 -->
+		<filters>
+			<filter>src/main/resources/filters/dubbox_${env}.properties</filter>
+		</filters>
+		
+		<!-- 资源替换 -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering><!-- 此目录资源启动过滤 -->
+			</resource>
+		</resources>
+	</build>
 </project>
